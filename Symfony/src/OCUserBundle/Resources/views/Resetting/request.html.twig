@@ -1,0 +1,39 @@
+
+{# On étend notre layout #}
+{% extends "DiabeteBundle:layout:login_layout.html.twig" %}
+
+{% block page_title %}Mot de passe oublié{% endblock %}
+
+{# Dans notre layout, il faut définir le block body #}
+{% block content %}
+			
+				<div class="col-sm-6">
+					<div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">Réinitialiser son mot de passe</h3>
+						</div>
+
+
+						<!--HORIZONTAL FORM-->
+						<!--===================================================-->
+
+						<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="form-horizontal" >
+    						<div class="panel-body">
+								<div class="form-group">
+									{% if invalid_username is defined %}
+            							<p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
+        							{% endif %}
+									<label class="col-sm-3 control-label" for="demo-hor-inputemail">Nom d'utilisateur</label>
+									<div class="col-sm-9">
+										<input type="text" id="username" class="form-control" name="username" placeholder="Utilisateur" autofocus />
+									</div>
+								</div>
+    						</div>
+    						<div class="panel-footer text-right">
+								<button type="submit" name="submit" class="btn btn-info" value="{{ 'resetting.request.submit'|trans }}">Valider</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+{% endblock %}

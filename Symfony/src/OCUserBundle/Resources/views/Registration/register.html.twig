@@ -1,0 +1,82 @@
+{% extends "DiabeteBundle:layout:login_layout.html.twig" %}
+
+{% block page_title %}Créer un compte{% endblock %}
+
+
+{% form_theme form 'DiabeteBundle:Form:fields.html.twig' %}
+{% block content %}
+<div class="col-sm-6">
+					<div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">Créer un compte utilisateur</h3>
+						</div>
+						
+						<!-- BLOCK STYLED FORM FORM  -->
+						<!--===================================================-->
+
+						{{ form_start(form) }}
+						 {{ form_errors(form) }}
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											{{ form_label(form.username, "Nom d'utilisateur", {'label_attr': {'class': 'control-label'}}) }}
+											{{ form_errors(form.username) }}
+											{{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+										</div>
+									</div>
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											{{ form_label(form.email, "Email", {'label_attr': {'class': 'control-label'}}) }}
+											{{ form_errors(form.email) }}
+											{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+										</div>
+									</div>
+								</div>
+								<fieldset>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											{{ form_label(form.plainPassword.first, "Mot de passe", {'label_attr': {'class': 'control-label'}}) }}
+											{{ form_errors(form.plainPassword.first) }}
+											{{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+										</div>
+									</div>
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											{{ form_label(form.plainPassword.second, "Confirmation du mot de passe", {'label_attr': {'class': 'control-label'}}) }}
+											{{ form_errors(form.plainPassword.second) }}
+											{{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+										</div>
+									</div>
+
+									<div class="col-sm-6">
+										<div class="form-group">
+										{{ form_label(form.situation, "Vous êtes", {'label_attr': {'class': 'control-label'}}) }}
+										{{ form_errors(form.situation) }}
+										{{ form_widget(form.situation, {'attr': {'class': 'form-control'}}) }}
+										</div>
+									</div>
+									
+								</div>
+								</fieldset>
+							</div>
+
+
+							<div class="panel-footer text-right">
+								<button class="btn btn-info" type="submit" value="{{ 'registration.submit'|trans }}">Créer</button>
+							</div>
+							{{ form_rest(form) }}
+
+						{{ form_end(form) }}
+
+						<!--===================================================-->
+						<!-- END OF BLOCK STYLED FORM FORM  -->
+
+
+
+					</div>
+				</div>
+{% endblock %}

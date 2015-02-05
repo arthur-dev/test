@@ -1,0 +1,55 @@
+{% extends "DiabeteBundle:layout:bundle_layout.html.twig" %}
+
+{% form_theme subscriberForm 'DiabeteBundle:Form:fields.html.twig' %}
+
+{% block content %}
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Modifier ses coordonnées</h3>
+                        </div>
+
+                        <!--HORIZONTAL FORM-->
+                        <!--===================================================-->
+
+                        <form role="form" novalidate action="#" method="post" class="form-horizontal">
+                        <div class="panel-body">
+                            <div class="row">
+                              {{ form_errors(subscriberForm) }}
+                                <div class="col-md-4">
+                                    <legend>Infos générales</legend>
+                                        {{ form_row(subscriberForm._token) }}
+                                        {{ form_row(subscriberForm.gender) }}
+                                        {{ form_row(subscriberForm.lastname) }}
+                                        {{ form_row(subscriberForm.firstname) }}
+                                        {{ form_row(subscriberForm.birthday) }}
+                                        {{ form_row(subscriberForm.address) }}
+                                        {{ form_row(subscriberForm.postalCode) }}
+                                        {{ form_row(subscriberForm.city) }}
+                                        {{ form_row(subscriberForm.phone) }}
+                                        {{ form_row(subscriberForm.cellPhone) }}
+                                        {{ form_row(subscriberForm.socialSecurityNumber) }}
+                                </div>
+                                <div class="col-md-4">
+                                    <legend>Médecin</legend>
+                                        <div class="form-group">
+                                            <label for="subscriber_doctor" class="col-sm-4 control-label">Médecin</label>
+                                            <div class="col-sm-8">
+                                                {{ form_widget(subscriberForm.doctor, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                                {{ form_errors(subscriberForm.doctor) }}
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-4 col-md-8">
+                                            <input type="submit" value="Ajouter l'abonné" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+{% endblock %}

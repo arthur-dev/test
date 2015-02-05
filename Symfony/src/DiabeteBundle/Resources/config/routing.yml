@@ -1,0 +1,87 @@
+diabete_homepage:
+    path:     /
+    defaults: { _controller: DiabeteBundle:Default:index }
+
+test:
+    path:     /test
+    defaults: { _controller: DiabeteBundle:Default:test }
+
+addSubscriber:
+    path:     /addSubscriber
+    defaults: { _controller: DiabeteBundle:Subscriber:add }
+
+editSubscriber:
+    path:     /editSubscriber
+    defaults: { _controller: DiabeteBundle:Subscriber:edit }
+
+editDiabeteProfileSubscriber:
+    path:     /editDiabeteProfileSubscriber
+    defaults: { _controller: DiabeteBundle:Subscriber:editDiabeteProfile }
+
+editDiabeteProfileDoctor:
+    path:     /editDiabeteProfileDoctor/{id}
+    defaults: { _controller: DiabeteBundle:Doctor:editDiabeteProfile }
+
+addDoctor:
+    path:     /addDoctor
+    defaults: { _controller: DiabeteBundle:Doctor:add }
+
+editDoctor:
+    path:     /editDoctor
+    defaults: { _controller: DiabeteBundle:Doctor:edit }
+
+filesServicesDiabetes:
+    path:     /filesServicesDiabetes
+    defaults: { _controller: DiabeteBundle:Files:ServiceDiabetes }
+
+subscriber:
+    path:     /subscriber/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Subscriber:index, nbDaysAgo: 7 }
+
+glycemie:
+    path:     /glycemie/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Subscriber:glycemie, nbDaysAgo: 7 }
+
+insuline:
+    path:     /releveInsuline/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Subscriber:insulin, nbDaysAgo: 7 }
+
+nutrition:
+    path:     /nutrition/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Subscriber:nutrition, nbDaysAgo: 7 }
+
+activite:
+    path:     /activite/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Subscriber:activite, nbDaysAgo: 7 }
+
+addGlucometer:
+    path:     /addGlucometer
+    defaults: { _controller: DiabeteBundle:Subscriber:addGlucometer }
+
+doctor:
+    path:     /doctor/
+    defaults: { _controller: DiabeteBundle:Doctor:index }
+
+doctorGet:
+    path:     /doctor/get
+    defaults: { _controller: DiabeteBundle:Doctor:indexGet }
+
+doctorViewSubsriber:
+    path:     /doctor/{id}/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Doctor:viewSubscriber, nbDaysAgo: 7 }
+
+doctorViewGlycemie:
+    path:     /glycemieSub/{id}/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Doctor:glycemie, nbDaysAgo: 7 }
+
+doctorViewInsuline:
+    path:     /insulineSub/{id}/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Doctor:insulin, nbDaysAgo: 7 }
+
+doctorViewNutrition:
+    path:     /nutritionSub/{id}/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Doctor:nutrition, nbDaysAgo: 7 }
+
+doctorViewActivite:
+    path:     /activiteSub/{id}/{nbDaysAgo}
+    defaults: { _controller: DiabeteBundle:Doctor:activite, nbDaysAgo: 7 }

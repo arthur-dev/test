@@ -1,0 +1,36 @@
+{% extends "DiabeteBundle:layout:general_layout.html.twig" %}
+
+
+{% block include %}
+    {{ include('DiabeteBundle:layout:include.html.twig') }}
+{% endblock %}
+
+{% block navbar %}
+    {{ include('DiabeteBundle:layout:block_navbar.html.twig') }}
+{% endblock %}
+
+{% block page_title %}Page blank{% endblock %}
+
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Library</a></li>
+    <li class="active">Data</li>
+</ol>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block side_bar_menu %}
+    {{ include('DiabeteBundle:layout:main_navbar.html.twig') }}
+{% endblock %}
+
+{% block additionnal_side_bar %}
+    {{ include('DiabeteBundle:layout:additionnal_side_bar.html.twig') }}
+{% endblock %}
+
+{% block script %}
+    {{ include('DiabeteBundle:layout:script.html.twig') }}
+{% endblock %}

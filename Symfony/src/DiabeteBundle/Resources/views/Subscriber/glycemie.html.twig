@@ -1,0 +1,63 @@
+{% extends "DiabeteBundle:layout:patient_layout.html.twig" %}
+
+
+{% block page_title %} 
+<a class="btn btn-primary pull-right" href="{{ path('addGlucometer') }}">Ajouter un glucomètre</a>Glycemie  {% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h3 class="panel-title">Données</h3></div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<form id="nbDaysForm" class="form-inline">
+							<div class="form-group">
+								<label for="nbDaysAgo">Nombre de jours :</label>
+								<select id="nbDaysAgo" class="form-control">
+									{% set nbDaysArray = [3,7,30,180] %}
+									{% for nbDays in nbDaysArray %}
+			  						<option {{ (nbDays == nbDaysAgo) ? 'selected' : '' }} value="{{ path('glycemie', {'nbDaysAgo' : nbDays}) }}">{{ nbDays }}</option>
+			  						{% endfor %}
+			  					</select>
+		  					</div>
+		  					<input type="submit" class="btn btn-primary" value="Appliquer" />
+	  					</form>
+  					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						{% if bloodGlucoseData != '[]' %}
+							<div class="row">
+								<div class="col-md-12">
+									<div id="chart-bloodglucose" data-bloodglucosedata="{{ bloodGlucoseData }}"></div>
+								</div>
+							</div>
+						{% else %}
+							<div class="alert">
+								<p>Pas de données</p>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	$('#nbDaysForm').submit(function(e) {
+		e.preventDefault();
+		var url = $("#nbDaysAgo option:selected").val();
+		window.location.href = url;
+	});
+</script>
+    {% if bloodGlucoseData != '[]' %}
+	<script type="text/javascript" src="{{ asset('bundles/Diabete/js/lib/Highcharts/highcharts.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/Diabete/js/lib/Highcharts/highcharts-more.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/Diabete/js/lib/Highcharts/highcharts-fix-language.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/Diabete/js/modules/highcharts-bloodglucose.js') }}"></script>
+{% endif %}
+
+{% endblock %}

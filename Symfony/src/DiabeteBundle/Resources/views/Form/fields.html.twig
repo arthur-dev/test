@@ -1,0 +1,69 @@
+{% extends 'form_div_layout.html.twig' %}
+
+{% block form_row %}
+{% spaceless %}
+    <div class="form-group {{ errors|length > 0 ? 'has-error' : '' }}">
+        {{ form_label(form, label|default(null), {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+        <div class="col-sm-8">
+        	{{ form_widget(form, {'attr': {'class': 'form-control'}}) }}
+        	{{ form_errors(form) }}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+    <span class="help-block">
+        {% for error in errors %}
+            {{
+                error.messagePluralization is null
+                    ? error.messageTemplate|trans(error.messageParameters, 'validators')
+                    : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+            }}
+        {% endfor %}
+    </span>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}
+
+{% block choice_widget_expanded %}
+{% spaceless %}
+    {# <div {{ block('widget_container_attributes') }}> #}
+    <div>
+    {% for child in form %}
+        {{ form_widget(child) }}
+        {# {{ form_label(child) }} #}
+    {% endfor %}
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+{% block checkbox_widget %}
+{% spaceless %}
+	<div class="checkbox">
+	    <label for="{{ id }}">
+	    	<input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+	    	{{ label|trans }}
+	    </label>
+    </div>
+{% endspaceless %}
+{% endblock checkbox_widget %}
+
+{% block date_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {{ block('form_widget_simple') }}
+    {% else %}
+        {#<div {{ block('widget_container_attributes') }}>#}
+        <div>
+            {{ date_pattern|replace({
+                '{{ year }}':  form_widget(form.year),
+                '{{ month }}': form_widget(form.month),
+                '{{ day }}':   form_widget(form.day),
+            })|raw }}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock date_widget %}

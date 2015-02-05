@@ -1,0 +1,53 @@
+{% extends "DiabeteBundle:layout:bundle_layout.html.twig" %}
+
+{% block page_title %}Médecin{% endblock %}
+
+{% block content %}
+<div class="col-sm-6">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Service Diabéte</h3>
+                        </div>
+
+
+
+<div class="panel {% if doctor is not empty %}panel-default{% else %}panel-warning{% endif %}">
+	<div class="panel-heading"><h3 class="panel-title">Médecin</h3></div>
+	<div class="panel-body">
+		{% if doctor is empty %}
+		<div class="alert alert-warning">
+			<p><strong>Attention !</strong> L'abonné ne dispose pas de médecin</p>
+		</div>
+		{% else %}
+		<div class="row">
+			<div class="col-sm-6">
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active">
+						<a href="#doctor{{ doctor.getId() }}" data-toggle="tab">{{ doctor.getFullName() }}</a>
+				    </li>
+			    </ul>
+			</div>
+			<div class="col-sm-6">
+				<div class="tab-content">
+						<ul class="list-unstyled">
+							{% if doctor.getPhone() != '' %}
+							<li>
+								<strong>Tel. 1 :</strong> {{ doctor.getPhone() }}
+							</li>
+							{% endif %}
+							{% if doctor.getCellPhone() != '' %}
+							<li>
+								<strong>Tel. 2 :</strong> {{ doctor.getCellPhone() }}
+							</li>
+		    				{% endif %}
+						</ul>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</div>
+
+					</div>
+				</div>
+{% endblock %}

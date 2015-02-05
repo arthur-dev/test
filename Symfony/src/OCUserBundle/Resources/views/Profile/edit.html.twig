@@ -1,0 +1,61 @@
+{% extends "DiabeteBundle:layout:bundle_layout.html.twig" %}
+{% block content %}
+<div class="col-sm-6">
+					<div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title">Mettre à jour vos coordonnées</h3>
+						</div>
+						
+						<!-- BLOCK STYLED FORM FORM  -->
+						<!--===================================================-->
+
+						{{ form_start(form) }}
+						 {{ form_errors(form) }}
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											{{ form_label(form.username, "Nom d'utilisateur", {'label_attr': {'class': 'control-label'}}) }}
+											{{ form_errors(form.username) }}
+											{{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
+										</div>
+									</div>
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											{{ form_label(form.email, "Email", {'label_attr': {'class': 'control-label'}}) }}
+											{{ form_errors(form.email) }}
+											{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											{{ form_label(form.current_password, "Mot de passe", {'label_attr': {'class': 'control-label'}}) }}
+											{{ form_errors(form.current_password) }}
+											{{ form_widget(form.current_password, {'attr': {'class': 'form-control'}}) }}
+										</div>
+
+									</div>
+									
+								</div>
+							</div>
+
+
+							<div class="panel-footer text-right">
+								<button class="btn btn-info" type="submit" value="{{ 'profile.edit.submit'|trans }}">Mettre à jour </button>
+							</div>
+							{{ form_rest(form) }}
+
+						{{ form_end(form) }}
+
+						<!--===================================================-->
+						<!-- END OF BLOCK STYLED FORM FORM  -->
+
+
+
+					</div>
+				</div>
+{% endblock %}

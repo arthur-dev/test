@@ -1,0 +1,13 @@
+services:
+
+    diabete.charts:
+        class: DiabeteBundle\Services\BloodGlucoseData
+
+    activite.charts:
+        class: DiabeteBundle\Services\MesureActiviteData
+
+    nutrition.charts:
+        class: DiabeteBundle\Services\MesureNutritionData
+
+    insulin.charts:
+        class: DiabeteBundle\Services\MesureInsulinData

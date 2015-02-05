@@ -1,0 +1,22 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 54.149.171.79
+    database_port: 3306
+    database_name: symfony
+    database_user: root
+    database_password: estylusbdd2576
+    # database_host: 127.0.0.1
+    # database_port: 
+    # database_name: eStylus
+    # database_user: root
+    # database_password: rom477347rom
+    mailer_transport: smtp
+    #mailer_host: 127.0.0.1
+    mailer_host: smtp.estylus.fr
+    #mailer_user: null
+    mailer_user: contact@estylus.fr
+    #mailer_password: null
+    mailer_password: estylus2015
+    locale: fr
+    secret: ThisTokenIsNotSoSecretChangeIt

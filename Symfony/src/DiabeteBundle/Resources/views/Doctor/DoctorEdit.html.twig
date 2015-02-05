@@ -1,0 +1,40 @@
+{% extends "DiabeteBundle:layout:doctor_layout.html.twig" %}
+
+{% form_theme doctorForm 'DiabeteBundle:Form:fields.html.twig' %}
+{% block page_title %}Médecin{% endblock %}
+
+{% block content %}
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Modifier mes coordonnées</h3>
+                        </div>
+
+<form role="form" novalidate action="#" method="post" class="form-horizontal">
+	<div class="row">
+		{{ form_errors(doctorForm) }}
+		<div class="col-md-4">
+            <legend>Infos générales</legend>
+            {{ form_row(doctorForm._token) }}
+            {{ form_row(doctorForm.gender) }}
+            {{ form_row(doctorForm.lastname) }}
+            {{ form_row(doctorForm.firstname) }}
+            {{ form_row(doctorForm.birthday) }}
+            {{ form_row(doctorForm.address) }}
+            {{ form_row(doctorForm.postalCode) }}
+            {{ form_row(doctorForm.city) }}
+            {{ form_row(doctorForm.phone) }}
+            {{ form_row(doctorForm.cellPhone) }}
+        </div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<div class="col-md-offset-4 col-md-8">
+					<input type="submit" value="Enregistrer" class="btn btn-primary" />
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,186 @@
+{% extends "DiabeteBundle:layout:doctor_layout.html.twig" %}
+
+
+{% block page_title %}
+<strong>{{ subscriber.getFirstname()}}  {{ subscriber.getLastname()}}</strong>
+{% endblock %}
+{% block content %}
+
+
+    <!-- ROW du haut  -->
+    <div class="row">
+
+        <!-- Vos info  -->
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                <h3 class="panel-title" >Les coordonnées de votre patient</h3>
+
+                </div>
+                <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <strong>Né(e) le </strong>{{ subscriber.getBirthday()|date('d/m/Y') }} ({{ subscriber.getAge() }} ans)
+                                </li>
+                                <li>
+                                    <strong>Adresse : </strong>{{subscriber.getAddress()}}
+                                </li>
+                                <li>
+                                    <strong>Code Postal : </strong>{{subscriber.getPostalCode()}}
+                                </li>
+                                <li>
+                                    <strong>Ville : </strong>{{subscriber.getCity()}}
+                                </li>
+                                <li>
+                                    <strong>Téléphone : </strong>{{subscriber.getPhone()}}
+                                </li>
+                                <li>
+                                    <strong>Téléphone : </strong>{{subscriber.getCellPhone()}}
+                                </li>
+                            </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Votre medecin  -->
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading"> <h3  class="panel-title" >Vos coordonnées</h3>
+                </div>
+                <div class="panel-body">
+                <ul class="list-unstyled">
+                                <li>
+                                    <strong></strong>{{ doctor.getFirstname()}} {{ doctor.getLastname() }}
+                                </li>
+                                <li>
+                                    <strong>Adresse : </strong>{{doctor.getAddress()}}
+                                </li>
+                                <li>
+                                    <strong>Code Postal : </strong>{{doctor.getPostalCode()}}
+                                </li>
+                                <li>
+                                    <strong>Ville : </strong>{{doctor.getCity()}}
+                                </li>
+                                <li>
+                                    <strong>Téléphone : </strong>{{doctor.getPhone()}}
+                                </li>
+                                <li>
+                                    <strong>Téléphone : </strong>{{doctor.getCellPhone()}}
+                                </li>
+                            </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Deuxieme row -->
+
+
+    <div class="row">
+
+        <!-- glycemie  -->
+        <div class="col-md-3">
+            <div class="panel">
+                <div class="panel-heading"> <h3 class="panel-title" >Glycémie</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <a class="btn btn-info" href="{{ path('doctorViewGlycemie', {'id':subscriber.id}) }}">Accéder au données</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- insuline  -->
+        <div class="col-md-3">
+            <div class="panel">
+                <div class="panel-heading"> <h3 class="panel-title" >Injection d'insuline</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <a class="btn btn-info" href="{{ path('doctorViewInsuline', {'id':subscriber.id}) }}">Accéder au données</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- activitee  -->
+        <div class="col-md-3">
+            <div class="panel">
+                <div class="panel-heading"> <h3 class="panel-title" >Activitées physiques</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <a class="btn btn-info" href="{{ path('doctorViewActivite', {'id':subscriber.id}) }}">Accéder au données</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- nutrition  -->
+        <div class="col-md-3">
+            <div class="panel">
+                <div class="panel-heading"> <h3 class="panel-title" >Nutrition</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <a class="btn btn-info" href="{{ path('doctorViewNutrition', {'id':subscriber.id}) }}">Accéder au données</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+<div class="row">
+<!-- Vos info  -->
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading"> 
+                <div class="panel-control">
+                                    <a href="{{ path('editDiabeteProfileDoctor', {'id':subscriber.id}) }}"<button class="dropdown-toggle btn btn-info">
+                                            <i class="fa fa-gear fa-lg"></i>
+                                        </button></a>
+                                </div>
+                <h3 class="panel-title" >Vos Paramètres</h3>
+
+                </div>
+                <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <strong>Facteur Sensibilite Insuline </strong>{{diabeteProfile.getFacteurSensibiliteInsuline()}}
+                                </li>
+                                <li>
+                                    <strong>Ratio Insuline Glucide : </strong>{{diabeteProfile.getRatioInsulineGlucide()}}
+                                </li>
+                                <li>
+                                    <strong>Glycemie Cible : </strong>{{diabeteProfile.getGlycemieCible()}}
+                                </li>
+                            </ul>
+                </div>
+            </div>
+        </div>            
+</div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-heading"> <h3 class="panel-title" >les données des 7 derniers jours</h3>
+                    </div>
+                    {% if bloodGlucoseData != '[]' %}
+                        {#<div id="chart-blood-glucose" class="jqplot-target" data-blueglucosedata="{{ blueGlucoseData }}"></div>#}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="chart-bloodglucose" data-bloodglucosedata="{{ bloodGlucoseData }}"></div>
+                                </div>
+                            </div>
+                    {% else %}
+                        <div class="alert">
+                            <p>Pas de données</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+    {% if bloodGlucoseData != '[]' %}
+    <script type="text/javascript" src="{{ asset('bundles/Diabete/js/lib/Highcharts/highcharts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/Diabete/js/lib/Highcharts/highcharts-more.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/Diabete/js/lib/Highcharts/highcharts-fix-language.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/Diabete/js/modules/highcharts-bloodglucose.js') }}"></script>
+{% endif %}
+{% endblock %}

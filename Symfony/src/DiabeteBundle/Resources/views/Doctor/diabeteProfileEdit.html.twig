@@ -1,0 +1,38 @@
+{% extends "DiabeteBundle:layout:doctor_layout.html.twig" %}
+
+{% form_theme diabeteProfileForm 'DiabeteBundle:Form:fields.html.twig' %}
+{% block page_title %}<a class="btn btn-primary pull-right" href="{{ path('doctorViewSubsriber', {'id':subscriber.id}) }}">Retour à la fiche patient</a> Glycemie  {% endblock %}
+{% block content %}
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Modifier les paramètres</h3>
+                        </div>
+
+                        <!--HORIZONTAL FORM-->
+                        <!--===================================================-->
+
+                        <form role="form" novalidate action="#" method="post" class="form-horizontal">
+                        <div class="panel-body">
+                            <div class="row">
+                              {{ form_errors(diabeteProfileForm) }}
+                                <div class="col-md-4">
+                                    <legend>Paramètres</legend>
+                                        {{ form_row(diabeteProfileForm._token) }}
+                                        {{ form_row(diabeteProfileForm.facteurSensibiliteInsuline) }}
+                                        {{ form_row(diabeteProfileForm.ratioInsulineGlucide) }}
+                                        {{ form_row(diabeteProfileForm.glycemieCible) }}
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="col-md-offset-4 col-md-8">
+                                            <input type="submit" value="Modifier" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+{% endblock %}

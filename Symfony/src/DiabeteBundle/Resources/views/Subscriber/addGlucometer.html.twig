@@ -1,0 +1,18 @@
+{% extends "DiabeteBundle:layout:patient_layout.html.twig" %}
+
+{% form_theme form 'DiabeteBundle:Form:fields.html.twig' %}
+{% block page_title %} Glycemie  {% endblock %}
+
+
+{% block content %}
+<div class="row">
+    	<div class="col-md-4">
+		    <form action="{{ path('addGlucometer') }}" method="post" class="form-horizontal">
+		        {{ form_widget(form) }}
+				<div class="col-sm-offset-4 col-sm-8">
+					<input type="submit" value="Ajouter le glucomètre et activer le service" class="btn btn-primary" />
+				</div>
+		    </form>
+	    </div>
+    </div>
+{% endblock %}

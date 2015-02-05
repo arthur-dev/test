@@ -1,0 +1,13 @@
+{% extends "DiabeteBundle:layout:bundle_layout.html.twig" %}
+{% block content %}
+					
+							<div class="pad-ver">
+								<img src="{{ asset('bundles/Diabete/images//av1.png') }}" alt="Profile Picture">
+								 
+							</div>
+							<h4 class="text-lg text-overflow mar-no">{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</h4>
+							<p class="text-sm">{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+							<a href="edit" class="btn btn-sm btn-primary pull-left" type="submit"><i class="fa fa-pencil fa-fw"></i>Modifier</a>
+
+    
+{% endblock %}

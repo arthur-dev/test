@@ -1,0 +1,22 @@
+{% extends "DiabeteBundle:layout:bundle_layout.html.twig" %}
+
+{% block page_title %}Médecin{% endblock %}
+
+{% block content %}
+				
+                        <div class="row">
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<a href="{{ path('filesServicesDiabetes') }}">
+							<img src="{{ asset('bundles/Diabete/images/blueGlucometer.jpg') }}" alt='blueGlucometer' />
+						</a>
+						<div class="caption">
+							<h3>Glycémie</h3>
+							<p class="text-center">
+								<a href="{{ path('filesServicesDiabetes') }}" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span> Voir</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+{% endblock %}
